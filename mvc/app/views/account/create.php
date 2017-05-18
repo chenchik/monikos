@@ -8,9 +8,9 @@
             <input id="un" type="text" name="username" placeholder="username">
             <input id="email" type="text" name="email" placeholder="email">
             <input id="pw" type="password" name="password" placeholder="password">
-            <select id="school" ng-repeat="x in schoolnames">
+            <select id="school">
                 <option selected disabled>select a school</option>
-                <option id="a{{x.schoolid}}" value="{{x.schoolid}}">{{x.schoolname}}</option>
+                <option ng-repeat="x in schoolnames" id="a{{x.schoolid}}" value="{{x.schoolid}}">{{x.schoolname}}</option>
             </select>
             <button ng-click="checkUsername()">Create</button>
 

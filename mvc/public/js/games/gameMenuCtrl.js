@@ -11,14 +11,16 @@ var showingPlaceBet = false;
 var datalid = document.getElementById('datalid').innerHTML;
 
 var gameMenuApp = angular.module('gameMenuApp', ['ngAnimate']);
-gameMenuApp.filter("trustUrl", ['$sce', function ($sce) {
+/*DANGEROUS*/
+/*gameMenuApp.filter("trustUrl", ['$sce', function ($sce) {
     return function (recordingUrl) {
         return $sce.trustAsResourceUrl(recordingUrl);
     };
-}]);
+}]);*/
 
-gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', function($scope, $sce, $http, $timeout) {
-
+/*DANGEROUS*/
+//gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', function($scope, $sce, $http, $timeout) {
+gameMenuApp.controller('gameMenuCtrl', function($scope, $http){
     
     //Nik's edits
     function getCookie(cname) {
@@ -112,13 +114,13 @@ gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', fu
 
 
 
-
-    $scope.queryBy = '$';
-    $scope.trustAsHtml = $sce.trustAsHtml;
+/*DANGEROUS*/
+//    $scope.queryBy = '$';
+//    $scope.trustAsHtml = $sce.trustAsHtml;
 
     $scope.createChallenge = function(dagame, challengeFlag){
 
-        var url = "/db/create_challenge.php";
+        
         var usr1 = getCurrentUser();
         var usr2 = challengeUser;
         var data = $.param({
@@ -132,8 +134,9 @@ gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', fu
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         };
-
-        $http.post(url, data, config)
+        var theurl = "/db/create_challenge.php";
+        //var theurl = '/db/get_drugs.php'
+        $http.post(theurl, data, config)
             .then(function (response) {
             console.log(response);
             $scope.response = response;
@@ -143,7 +146,7 @@ gameMenuApp.controller('gameMenuCtrl', ['$scope','$sce', '$http', '$timeout', fu
 
     }
 
-}]);
+});
 
 function gotoGame1(challengeFlag){
     //normal play, not challenge mode

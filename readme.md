@@ -15,10 +15,10 @@ Memorizing and remembering over 200 drugs is difficult! Current pharmacy student
 
 ## Built With
 
-- [Bootstrap](http://getbootstrap.com/) - provided styling for our games and content.
-- [jQuery](https://jquery.com/) - used to game-ify our app with interactive elements.
-- [AngularJS](https://angularjs.org/) - modularized our application and let us dynamically interact with our database.
-- [Checklist-Model](https://github.com/vitalets/checklist-model) - allowed us to store multiple objects in one model to make our list objects.
+- [Bootstrap](http://getbootstrap.com/) - provided styling for our games and content
+- [jQuery](https://jquery.com/) - used to game-ify our app with interactive elements
+- [AngularJS](https://angularjs.org/) - modularized our application and let us dynamically interact with our database
+- [Checklist-Model](https://github.com/vitalets/checklist-model) - allowed us to store multiple objects in one model to make our list objects
 
 
 

@@ -61,7 +61,7 @@
 		</div>
        	<div id=app_body>
 	        <div ng-if="firstLoad">
-				{{getlid(<?=$data['lid']?>)}}
+				{{getlid(<?=$data['lid']?>, false)}}
 			</div>
 
 
@@ -73,7 +73,7 @@
 
       <div id = 'answer_field'>
 			<form class = 'answer' id = 'answer_input' name = "jojo">
-				<input type="text" id="f1" name="Answer" placeholder="Answer:" >
+				<input type="text" id="f1" name="Answer" autocomplete="off" placeholder="Answer:" >
 			</form>
       <div class='submit_btn'><button id ='submit_button' class = "button button5" onclick="checkAnswer();" ><span class = 'glyphicon glyphicon-ok-circle'/></button></div>
       </div>

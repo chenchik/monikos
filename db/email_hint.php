@@ -30,27 +30,34 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         $subject = 'New Mnemonic Suggestion';
 
         $body = "From: $name\n Message:\n $mnemonic Drug: $drug";
+ 
+        if ($_POST['submit']) {
+            $to      =  'monikos.llc@gmail.com';
+            $subject = 'New Mnemonic Request';
+            
+            $message = 'new mnemonic for '.$drug."\nname of mnemonic:".$name."\nmnemonic:".$mnemonic."\n".
 
-        if ($_POST['submit']) {				 
-            if (mail ($to, $subject, $body, $from)) { 
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+            $headers .= 'From: <monikosguide@monikos.com>' . "\r\n";
+            
+            if(mail($to, $subject, $message)){
+                echo '<p>Thanks, your hint has been sent!</p>';
 
-                echo '<p>Your suggestion has been sent!</p>';
-
-                $sql = "UPDATE Users SET capsules = capsules + 200 WHERE id= '" .$_COOKIE['user_id'] ."'";
-
-            } else { 
-                echo '<p>Something went wrong, go back and try again!</p>'; 
-            } 
+                //code to update capsules
+                //$sql = "UPDATE Users SET capsules = capsules + 200 WHERE id= '" .$_COOKIE['user_id'] ."'";
+            } else {
+                echo "failed to send email :(";
+            }
         }
 
-        if ($conn->query($sql) === TRUE) {
+        /*if ($conn->query($sql) === TRUE) {
         } else {
             echo '[{"response":"'.$conn->error.'"}]';
-        }
+        }*/
 
 
         $conn->close();
-        echo($result);
 
         ?>
 

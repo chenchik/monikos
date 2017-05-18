@@ -27,7 +27,7 @@
 
        <a ng-click='home()'><img id="toplogo" src="/mvc/public/images/logo_without_words_version_1.png"></a>
 
-            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
+            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>, false)}}</div>
 
 
 

@@ -74,7 +74,7 @@
 
 
 
-            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>)}}</div>
+            <div ng-if="firstLoad">{{getlid(<?=$data['lid']?>, false)}}</div>
 
             <div id="challengeCompleteMessage" style="display:none">
                 <img id="challengeCompleteLogo" src="/mvc/public/images/white_logo.png">

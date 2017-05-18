@@ -137,3 +137,13 @@ span#notificationIndicator {
   color: #8d99ae;
   opacity: 1;
 }
+
+.game-red:hover{
+    text-decoration: none !important;
+}
+.game-block:hover{
+    text-decoration: none !important;   
+}
+ a:hover{
+    text-decoration: none;
+ }

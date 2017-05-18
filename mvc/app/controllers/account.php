@@ -19,11 +19,12 @@ class Account extends Controller {
 		//creates the user
 		$user = $this->model('User');
 		$user->name = $name;
-		echo "\n echoing user name " . $user->name;
+		//echo "\n echoing user name " . $user->name;
 
 
 		//directory path
-		$this->view('account/index', ['name' => $user->name]);
+		//$this->view('account/index', ['name' => $user->name]);
+		$this->view('account/login');
 	}
 
 	public function test($param){

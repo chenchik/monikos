@@ -55,9 +55,19 @@
 
             <!--loading gif-->
             <div class="loadingDiv" ng-show="loading">
-                <p class="loadingText">LOADING...</p>
                 <img class="loadingGif" src="/mvc/public/images/loading.gif">
             </div>
+            <!--<div class="dark-load"></div>
+            <div class="with-box" id="cssload-pgloading">
+                <div class="cssload-loadingwrap">
+                    <ul class="cssload-bokeh">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>-->
 
             <div class="drug-block" ng-model="collapsed"
                  ng-click="collapsed=!collapsed"
@@ -140,11 +150,11 @@
 
         </div>
 
-        <!-------------------SUGGESTION POPUP FORM--------------------->
+        <!--SUGGESTION POPUP FORM-->
         <div class="suggestion-popup show2">
             <div class='ng-modal-close ng-modal-close-suggestion' ng-click='hidePopup2()'>X</div>
             <form method="post" action="../../../db/email_hint.php" id="mnemonic-form">
-                <label>Name:</label><input name='name' type="text">
+                <label>Username:</label><input name='name' type="text" value="{{getUser();}}">
                 <label>Drug:                           </label>
                 <select class=drug-form-list name='drug'>
                     <option ng-repeat="x in names">{{x.Generic}}</option>

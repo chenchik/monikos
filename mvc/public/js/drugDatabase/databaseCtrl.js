@@ -120,16 +120,19 @@ app.controller('databaseCtrl', ['$scope','$sce', '$http', '$timeout', function($
     $http.get(url)
         .then(function (response) {
         console.log(response);
+        $('#cssload-pgloading').css({'opacity':'0.0'});
+        $(".dark-load").css({'opacity':'0.0'})
+        $scope.loading = false;
         $scope.names = response.data.records;
         console.log($scope.names);
-        $scope.loading = false;
+        
     });
 
 
     //header home button
     $scope.home = function(){
         //create new database controller
-        window.location = window.location.origin + "/mvc/public/home/";
+        window.location = window.location.origin + "/mvc/public/home";
     }
 
 
@@ -182,7 +185,6 @@ app.controller('databaseCtrl', ['$scope','$sce', '$http', '$timeout', function($
         }); 
         
     }
-
 
 
     $scope.updateDislikes = function(dislikeCount, id){

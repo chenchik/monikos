@@ -73,31 +73,35 @@ app.controller('myCtrl', function($scope, $http) {
         console.log(response);$scope.capsules = response.data.records;
     }); 
 
-    var url_getschools = "/db/get_schools_list.php";
-//    $http.post(url_getschools, data, config).then(function (response) {
-//        console.log(response);$scope.school_list = response.data.records;
-//    }); 
-    
-    $scope.school_listId = [];
-    $scope.school_lists = [];
-    $http.post(url_getschools, data, config)
-        .then(function (response) {
-        console.log(response); 
+    $scope.getSchoolLists = function(){
+        var url_getschools = "/db/get_schools_list.php";
+    //    $http.post(url_getschools, data, config).then(function (response) {
+    //        console.log(response);$scope.school_list = response.data.records;
+    //    }); 
+        
+        $scope.school_listId = [];
+        $scope.school_lists = [];
+        $http.post(url_getschools, data, config)
+            .then(function (response) {
+            console.log(response); 
 
-        $scope.school_listId = response.data.records;
+            $scope.school_listId = response.data.records;
 
-        if(response.data.records.length < 1){
-            $(".list-collection-block").append('<p id="noListsMessage">This school does not have any lists.</p>');
-        }else{
-            for(var i in response.data.records){
-                $scope.school_lists.push({
-                    name: response.data.records[i].list_name.toString(),
-                    drugs: response.data.records[i].drugnames.toString().split(",")
-                });
+            if(response.data.records.length < 1){
+                $(".list-collection-block").append('<p id="noListsMessage">This school does not have any lists.</p>');
+            }else{
+                for(var i in response.data.records){
+                    $scope.school_lists.push({
+                        name: response.data.records[i].list_name.toString(),
+                        drugs: response.data.records[i].drugnames.toString().split(",")
+                    });
+                }
             }
-        }
 
-    });
+        });
+    }
+
+    $scope.getSchoolLists();
 
 
 
@@ -155,7 +159,7 @@ app.controller('myCtrl', function($scope, $http) {
         $scope.listId = response.data.records
 
         if(response.data.records.length < 1){
-            $(".list-collection-block").append('<p id="noListsMessage">Please create a list</p>');
+            $(".custom-list-collection-block").append('<p id="noListsMessage">Please create a list</p>');
         }else{
             for(var i in response.data.records){
                 $scope.lists.push({
