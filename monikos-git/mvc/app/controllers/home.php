@@ -44,10 +44,6 @@ class Home extends Controller {
 		$this->view('listManager/index');
 	}
 
-	public function indextest(){
-		$this->view('home/index-test');
-	}
-
 
 }
 

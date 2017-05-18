@@ -44,13 +44,6 @@ app.controller('loginCtrl', function($scope, $http, $location) {
         });
     }
 
-    function showError(str){
-        
-        $('#errorMessage').slideDown('fast');
-        $('.errorText').html(str);
-        $scope.loading = false;
-    }
-
     function handleLoginResponse(response){
         console.log(response);
         $scope.response = response;
@@ -63,11 +56,10 @@ app.controller('loginCtrl', function($scope, $http, $location) {
             if(document.cookie.indexOf("username") < 0){
                 document.cookie = "username="+response.data[0].username+"; expires="+(Date.now()+(86400 * 30))+"; path=/";
             }
-            $scope.loading = false;
         }else{
-            showError('Incorrect username or password.');  
+            alert("incorrect password or username");
         }
-        
+        $scope.loading = false;
     }
 
     function handleLoginFailure(response){
@@ -76,14 +68,6 @@ app.controller('loginCtrl', function($scope, $http, $location) {
     }
 
     function handleOfflineLogin(){
-        window.location = window.location.origin + "/mvc/public/home/drugDatabase";
+        window.location = window.location.origin + "/mvc/public/home";
     }
 });
-
-$( document ).ready(function() {
-    $('#errorBtn').on('click', function(){
-        $('#errorMessage').slideUp('fast');
-    });
-
-});
-

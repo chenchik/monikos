@@ -56,7 +56,7 @@
         </div>
 
         <h1 class="list-m-header your-list">Your List</h1>
-        <div class='list-collection-block custom-list-collection-block'>
+        <div class='list-collection-block'>
             <div ng-class="list_block" class="list_block" ng-repeat="list in lists track by $index">
 
                 <h1 class = "list_name_header">

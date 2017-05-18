@@ -7,8 +7,8 @@ header("Content-Type: application/json; charset=UTF-8");
 
 require_once 'db_creds.php'; 
 
-$sql = "INSERT INTO Challenge (challengeid, user1, user2, challengegame, bet, user1score, user2score, winner, url)
-VALUES (NULL, '".$_POST["user1"]."', '".$_POST["user2"]."', '" . $_POST["game"]. "', '". $_POST["bet"]."', -1, -1, NULL, '/dummyval')";
+$sql = "INSERT INTO Challenge (challengeid, user1, user2, challengegame, bet)
+VALUES (NULL, '".$_POST["user1"]."', '".$_POST["user2"]."', '" . $_POST["game"]. "', '". $_POST["bet"]."')";
 
 if ($conn->query($sql) === TRUE) {
 

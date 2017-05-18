@@ -234,41 +234,26 @@ app.controller('matchingCtrl', function($scope, $http) {
 
 
     $scope.firstLoad = true;
-    
-    $scope.getlid = function(thelid, schoolrequest){
+    $scope.getlid = function(lid){
         var config = {
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         };
         var data = $.param({
-            lid: thelid
+            lid: lid
         });
 
         //url = window.location.origin + "/fb_login.php";
         //var listurl = "http://monikos.xpyapvzutk.us-east-1.elasticbeanstalk.com/get_specific_list.php";
-        var listurl = "";
-        if(!schoolrequest){
-            listurl = "/db/get_specific_list.php";
-        }else{
-            listurl = "/db/get_specific_school_list.php";
-        }
+        var listurl = "/db/get_specific_list.php";
 
         $http.post(listurl, data, config)
             .then(function (response) {
-            //handle if this is a school list request
-            if(response.data.drugnames == undefined){
-                $scope.getlid(thelid, true);
-                if(schoolrequest){
-                    $scope.firstLoad = false;
-                    alert("We could not load your list");
-                    return -1;
-                }
-            }else{
-                $scope.select = response.data.drugnames.split(",");
-                //console.log("SELCT " + $scope.select[0]);
-                $scope.getAllTheDrugs();
-            }
+            //console.log(response.data.drugnames);
+            $scope.select = response.data.drugnames.split(",");
+            //console.log("SELCT " + $scope.select[0]);
+            $scope.getAllTheDrugs();
         });
         $scope.firstLoad = false;
 

@@ -48,7 +48,7 @@ label.field-name {
     
     .database-block{padding:90px 0 0 0}
     
-    a{text-decoration: none !important;}
+    a{text-decoration: none;}
     
     a .database-block {
         color: #fff;
@@ -88,6 +88,4 @@ label.field-name {
 	margin-top: 15px;
 }
 
-.study-block:hover{
-    text-decoration: none !important;
 }

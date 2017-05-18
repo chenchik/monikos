@@ -12,7 +12,7 @@ var app = angular.module('myApp', []);
     $scope.type = "Brand";
     var nextIndex = 0;
     $scope.result = "WRONG";
-    console.log(" HEREEE 3");
+    console.log(" HEREEE 3")
     $scope.currentIndex = 1;
 		var cuIn = 1;
 		$scope.select = [];
@@ -225,39 +225,24 @@ var app = angular.module('myApp', []);
 
     //dcedits
     $scope.firstLoad = true;
-    $scope.getlid = function(thelid, schoolrequest){
+    $scope.getlid = function(lid){
       var config = {
       headers : {
           'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
         }
       };
       var data = $.param({
-        lid: thelid
+        lid: lid
       });
 
-      var listurl = "";
-      if(!schoolrequest){
-          listurl = "/db/get_specific_list.php";
-      }else{
-          listurl = "/db/get_specific_school_list.php";
-      }
+      var listurl = "/db/get_specific_list.php";
       $http.post(listurl, data, config)
       .then(function (response) {
-        //handle if this is a school list request
-        if(response.data.drugnames == undefined){
-            $scope.getlid(thelid, true);
-            if(schoolrequest){
-                $scope.firstLoad = false;
-                alert("We could not load your list");
-                return -1;
-            }
-        }else{
           console.log(response.data.drugnames);
           $scope.select = response.data.drugnames.split(",");
           console.log("SELCT " + $scope.select[0]);
           console.log("select list " + $scope.select.length);
           $scope.getallTheDrugs();
-        }
       });
       $scope.firstLoad = false;
 
